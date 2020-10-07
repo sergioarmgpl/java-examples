@@ -42,6 +42,9 @@ public class ConceptosBasicosPOO {
         H3Hijo h3=new H3Hijo();
         System.out.println(h3.colorOjos);
         h3.hablar();//Comparar con el h1 el resultado de hablar
+        //Manejo de errores
+        ManejoErrores e=new ManejoErrores();
+        e.dividir(3, 0);
 
     }
     

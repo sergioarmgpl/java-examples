@@ -9,14 +9,9 @@ package conceptosbasicospoo;
  *
  * @author sergio.mendez
  */
-public class H3Hijo extends HerenciaPapa{
-
-    public H3Hijo(){
-        this.colorOjos="azules";
-    }
-    //Sobreescribe el método hablar de HerenciaPapa
-    public void hablar(){
-        System.out.println("Holaaaa");
+public class ComposicionSuperficieMesa {
+    public ComposicionSuperficieMesa(){
+        System.out.println("SuperficieMesa");
     }
     
 }
