@@ -45,6 +45,8 @@ public class ConceptosBasicosPOO {
         //Manejo de errores
         ManejoErrores e=new ManejoErrores();
         e.dividir(3, 0);
+        //Ejemplo composición Mesa
+        ComposicionMesa mesa1=new ComposicionMesa();
 
     }
     
