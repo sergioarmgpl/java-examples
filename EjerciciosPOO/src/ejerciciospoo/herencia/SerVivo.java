@@ -28,5 +28,4 @@ public class SerVivo {
     public void morir(){
         System.out.println("Morir");
     }
-    
 }
