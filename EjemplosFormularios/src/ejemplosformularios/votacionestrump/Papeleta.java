@@ -12,6 +12,7 @@ package ejemplosformularios.votacionestrump;
 public class Papeleta {
     private String color;
     private String candidato;
+    private String id;
     public Papeleta(String color,String candidato){
         this.color = color;
         this.candidato = candidato;
