@@ -39,6 +39,7 @@ public class FrmVotaciones extends javax.swing.JFrame {
         jButton5 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        jButton6 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -86,6 +87,13 @@ public class FrmVotaciones extends javax.swing.JFrame {
 
         jLabel2.setText("Conteo de Votos");
 
+        jButton6.setText("Totalizar");
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -98,7 +106,10 @@ public class FrmVotaciones extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(50, 50, 50)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel2)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLabel2)
+                                        .addGap(32, 32, 32)
+                                        .addComponent(jButton6))
                                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 379, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(138, 138, 138)
@@ -130,11 +141,13 @@ public class FrmVotaciones extends javax.swing.JFrame {
                     .addComponent(jButton3)
                     .addComponent(jButton4)
                     .addComponent(jButton5))
-                .addGap(26, 26, 26)
-                .addComponent(jLabel2)
+                .addGap(21, 21, 21)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(jButton6))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(16, Short.MAX_VALUE))
+                .addContainerGap(8, Short.MAX_VALUE))
         );
 
         pack();
@@ -172,6 +185,35 @@ public class FrmVotaciones extends javax.swing.JFrame {
         bolsa.clear();
         salida.setText("");
     }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+        // TODO add your handling code here:
+        int n = bolsa.size();
+        Papeleta tmp=null;
+        salida.setText("");
+        int TTrump=0;
+        int TBiden=0;
+        for(int i=0;i<=(n-1);i++)
+        {
+            tmp = bolsa.get(i);
+            if(tmp.getColor() == "azul")
+                TBiden++;
+            else
+                TTrump++;
+        }
+        
+        salida.setText("");
+        salida.append("EL TOTAL DE VOTOS ES: \n");
+        salida.append("Trump: "+TTrump+"\n");
+        salida.append("Biden: "+TBiden+"\n");
+        
+        if(TTrump>TBiden)
+           salida.append("Gano Trump\n");
+        else if(TTrump<TBiden)
+           salida.append("Gano Biden\n");
+        else
+           salida.append("Empate\n");
+    }//GEN-LAST:event_jButton6ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -214,6 +256,7 @@ public class FrmVotaciones extends javax.swing.JFrame {
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
+    private javax.swing.JButton jButton6;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
