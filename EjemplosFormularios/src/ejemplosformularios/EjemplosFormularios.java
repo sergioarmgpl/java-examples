@@ -10,6 +10,7 @@ import ejemplosformularios.ejemplosbasicos.*;
 import ejemplosformularios.operaciones.*;
 
 import ejemplosformularios.operacionesmatematicas.*;
+import ejemplosformularios.votacionestrump.*;
 
 /**
  *
@@ -41,7 +42,8 @@ public class EjemplosFormularios {
         System.out.println("mayor: "+op1.mayor(3,2));
         System.out.println("sumaArmonica: "+op1.sumaArmonica(3));
         */
-        new FrmOpMatematicas().show();
+        //new FrmOpMatematicas().show();
+        new FrmVotaciones().show();
 
         
         
