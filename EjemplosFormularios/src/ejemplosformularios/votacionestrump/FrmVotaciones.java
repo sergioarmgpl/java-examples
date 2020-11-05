@@ -13,7 +13,8 @@ import java.util.ArrayList;
  * @author sergio.mendez
  */
 public class FrmVotaciones extends javax.swing.JFrame {
-    ArrayList <Papeleta>bolsa=new ArrayList();
+    public ArrayList <Papeleta>bolsa=new ArrayList();
+    public static ArrayList <Votante>votantes=new ArrayList();
 
     /**
      * Creates new form FrmVotaciones
@@ -21,6 +22,54 @@ public class FrmVotaciones extends javax.swing.JFrame {
     public FrmVotaciones() {
         initComponents();
     }
+    
+    public void desactivarBotones(){
+        btnVotarBiden.setEnabled(false);
+        btnVotarTrump.setEnabled(false);
+    }
+    
+    public void mostrarVotantes(){
+        int n = votantes.size();
+        Votante tmp=null;
+        salida.setText("");
+        salida.append("Total votantes: "+n+"\n");
+        for(int i=0;i<=(n-1);i++){
+            tmp=null;
+            tmp=votantes.get(i);
+            salida.append("Nombre: "+tmp.nombreCompleto+" id: "+tmp.id+"\n");
+        }
+    }
+    
+    public void totalizar(){
+        int n = bolsa.size();
+        Papeleta tmp=null;
+        salida.setText("");
+        int TTrump=0;
+        int TBiden=0;
+        for(int i=0;i<=(n-1);i++)
+        {
+            tmp = bolsa.get(i);
+            if(tmp.getColor() == "azul")
+                TBiden++;
+            else
+                TTrump++;
+        }
+        
+        salida.setText("");
+        salida.append("EL TOTAL DE VOTOS ES: \n");
+        salida.append("Trump: "+TTrump+"\n");
+        salida.append("Biden: "+TBiden+"\n");
+        
+        if(TTrump>TBiden)
+           salida.append("Gano Trump\n");
+        else if(TTrump<TBiden)
+           salida.append("Gano Biden\n");
+        else
+           salida.append("Empate\n");
+    }
+    
+    
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -31,16 +80,21 @@ public class FrmVotaciones extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jButton7 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         salida = new javax.swing.JTextArea();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        btnVotarTrump = new javax.swing.JButton();
+        btnVotarBiden = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jButton6 = new javax.swing.JButton();
+        jButton8 = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
+
+        jButton7.setText("jButton7");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -48,17 +102,19 @@ public class FrmVotaciones extends javax.swing.JFrame {
         salida.setRows(5);
         jScrollPane1.setViewportView(salida);
 
-        jButton1.setText("Votar X Trump");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnVotarTrump.setText("Votar X Trump");
+        btnVotarTrump.setEnabled(false);
+        btnVotarTrump.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnVotarTrumpActionPerformed(evt);
             }
         });
 
-        jButton2.setText("Votar por Biden");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        btnVotarBiden.setText("Votar por Biden");
+        btnVotarBiden.setEnabled(false);
+        btnVotarBiden.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                btnVotarBidenActionPerformed(evt);
             }
         });
 
@@ -95,74 +151,96 @@ public class FrmVotaciones extends javax.swing.JFrame {
             }
         });
 
+        jButton8.setText("registroVotante");
+        jButton8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton8ActionPerformed(evt);
+            }
+        });
+
+        jButton1.setText("Votantes");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(42, 42, 42)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(50, 50, 50)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel2)
-                                        .addGap(32, 32, 32)
-                                        .addComponent(jButton6))
-                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 379, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(138, 138, 138)
-                                .addComponent(jLabel1))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(jButton1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jButton2)))
-                        .addContainerGap(68, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButton3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton4)
-                        .addGap(27, 27, 27)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 379, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(67, 67, 67))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addGap(33, 33, 33)
+                        .addComponent(jButton6)
+                        .addGap(18, 18, 18)
                         .addComponent(jButton5)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addGap(89, 89, 89))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jButton3)
+                            .addComponent(btnVotarTrump))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jButton4)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jButton1))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(btnVotarBiden)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jButton8)))
+                        .addGap(20, 20, 20))))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(94, 94, 94)
+                .addComponent(jLabel1)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(24, 24, 24)
+                .addGap(28, 28, 28)
                 .addComponent(jLabel1)
-                .addGap(30, 30, 30)
+                .addGap(50, 50, 50)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2))
-                .addGap(35, 35, 35)
+                    .addComponent(btnVotarTrump)
+                    .addComponent(btnVotarBiden)
+                    .addComponent(jButton8))
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton3)
                     .addComponent(jButton4)
-                    .addComponent(jButton5))
-                .addGap(21, 21, 21)
+                    .addComponent(jButton3)
+                    .addComponent(jButton1))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 50, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton6)
                     .addComponent(jLabel2)
-                    .addComponent(jButton6))
+                    .addComponent(jButton5))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(8, Short.MAX_VALUE))
+                .addGap(20, 20, 20))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnVotarTrumpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVotarTrumpActionPerformed
         // TODO add your handling code here:
         bolsa.add( new Papeleta("rojo","Trump") );
-    }//GEN-LAST:event_jButton1ActionPerformed
+        desactivarBotones();
+    }//GEN-LAST:event_btnVotarTrumpActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void btnVotarBidenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVotarBidenActionPerformed
         // TODO add your handling code here:
         bolsa.add( new Papeleta("azul","Biden") );
-    }//GEN-LAST:event_jButton2ActionPerformed
+        desactivarBotones();
+    }//GEN-LAST:event_btnVotarBidenActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
@@ -189,32 +267,18 @@ public class FrmVotaciones extends javax.swing.JFrame {
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         // TODO add your handling code here:
-        int n = bolsa.size();
-        Papeleta tmp=null;
-        salida.setText("");
-        int TTrump=0;
-        int TBiden=0;
-        for(int i=0;i<=(n-1);i++)
-        {
-            tmp = bolsa.get(i);
-            if(tmp.getColor() == "azul")
-                TBiden++;
-            else
-                TTrump++;
-        }
-        
-        salida.setText("");
-        salida.append("EL TOTAL DE VOTOS ES: \n");
-        salida.append("Trump: "+TTrump+"\n");
-        salida.append("Biden: "+TBiden+"\n");
-        
-        if(TTrump>TBiden)
-           salida.append("Gano Trump\n");
-        else if(TTrump<TBiden)
-           salida.append("Gano Biden\n");
-        else
-           salida.append("Empate\n");
+        totalizar();
     }//GEN-LAST:event_jButton6ActionPerformed
+
+    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
+        // TODO add your handling code here:
+        new FrmVotante().show();
+    }//GEN-LAST:event_jButton8ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        mostrarVotantes();
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -252,12 +316,15 @@ public class FrmVotaciones extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    public static javax.swing.JButton btnVotarBiden;
+    public static javax.swing.JButton btnVotarTrump;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
+    private javax.swing.JButton jButton7;
+    private javax.swing.JButton jButton8;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
