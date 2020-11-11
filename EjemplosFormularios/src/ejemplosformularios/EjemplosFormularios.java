@@ -11,6 +11,7 @@ import ejemplosformularios.operaciones.*;
 
 import ejemplosformularios.operacionesmatematicas.*;
 import ejemplosformularios.votacionestrump.*;
+import ejemplosformularios.refrigeradora.*;
 
 /**
  *
@@ -43,7 +44,8 @@ public class EjemplosFormularios {
         System.out.println("sumaArmonica: "+op1.sumaArmonica(3));
         */
         //new FrmOpMatematicas().show();
-        new FrmVotaciones().show();
+        //new FrmVotaciones().show();
+        new FrmRefri().show();
 
         
         
