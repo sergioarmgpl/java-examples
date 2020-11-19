@@ -7,27 +7,42 @@ package ejemplosformularios.refrigeradora;
 
 import java.util.ArrayList;
 
+
 /**
  *
  * @author sergio.mendez
  */
 public class Refrigeradora {
+    public int n;
+    public int limite=0;
+    public ArrayList <Alimento>alimentos=new ArrayList();
     
-    ArrayList <Alimento>alimentos=new ArrayList();
-    
-    public void meterAlimento(Alimento tmp){
-        alimentos.add(tmp);
+    public boolean meterAlimento(Alimento tmp){
+        boolean agregado=false;
+        if(limite<10)
+        {
+            alimentos.add(tmp);
+            agregado=true;
+        }
+        return agregado;
     }
-    public void sacarAlimento(String alimento){
+    public boolean sacarAlimento(String alimento){
+        boolean eliminado=false;
         int n=alimentos.size();
         Alimento tmp;
         for(int i=0;i<=(n-1);i++){
             tmp=null;
             tmp=alimentos.get(i);
             if(tmp.nombre.compareTo(alimento)==0)
+            {
+                alimentos.remove(i);
+                eliminado=true;
                 break;
+            }
         }
+        return eliminado;
     }
+    
     public void envejecerAlimentos(){
         ArrayList <Alimento>AliActualizado=new ArrayList();
         int n=alimentos.size();

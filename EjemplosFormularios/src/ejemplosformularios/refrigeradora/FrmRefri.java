@@ -11,6 +11,7 @@ package ejemplosformularios.refrigeradora;
  */
 public class FrmRefri extends javax.swing.JFrame {
     public Refrigeradora mirefri=new Refrigeradora();
+    public Bitacora bitacora=new Bitacora();
 
     /**
      * Creates new form FrmRefri
@@ -43,6 +44,7 @@ public class FrmRefri extends javax.swing.JFrame {
         JLabel2 = new javax.swing.JLabel();
         btnSalir = new javax.swing.JButton();
         btnEnvejecer = new javax.swing.JButton();
+        btnBitacora = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -89,6 +91,11 @@ public class FrmRefri extends javax.swing.JFrame {
         });
 
         btnSacarAlimento.setText("SacarAlimento");
+        btnSacarAlimento.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSacarAlimentoActionPerformed(evt);
+            }
+        });
 
         btnMostrarAlimentos.setText("Mostrar Alimentos");
         btnMostrarAlimentos.addActionListener(new java.awt.event.ActionListener() {
@@ -120,6 +127,13 @@ public class FrmRefri extends javax.swing.JFrame {
             }
         });
 
+        btnBitacora.setText("Bitacora");
+        btnBitacora.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBitacoraActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -141,8 +155,10 @@ public class FrmRefri extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(btnSacarAlimento)
-                                .addGap(73, 73, 73)
-                                .addComponent(btnMostrarAlimentos))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(btnMostrarAlimentos)
+                                .addGap(18, 18, 18)
+                                .addComponent(btnBitacora))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel1)
                                 .addGap(41, 41, 41)
@@ -151,11 +167,12 @@ public class FrmRefri extends javax.swing.JFrame {
                                 .addComponent(btnEnvejecer))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(18, 18, 18)
-                        .addComponent(btnComidaPreparada)
-                        .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(btnCarne)
-                            .addComponent(btnVerdura))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(btnComidaPreparada)
+                                .addGap(18, 18, 18)
+                                .addComponent(btnVerdura)))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(18, 18, 18)
@@ -197,7 +214,8 @@ public class FrmRefri extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnMostrarAlimentos)
-                    .addComponent(btnSacarAlimento))
+                    .addComponent(btnSacarAlimento)
+                    .addComponent(btnBitacora))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(12, 12, 12))
@@ -208,6 +226,7 @@ public class FrmRefri extends javax.swing.JFrame {
 
     private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
         // TODO add your handling code here:
+        bitacora.cerrar();
         dispose();
     }//GEN-LAST:event_btnSalirActionPerformed
 
@@ -216,6 +235,7 @@ public class FrmRefri extends javax.swing.JFrame {
         mirefri.meterAlimento(new ComidaPreparada( nombreAlimento.getText() ));
         contenidoRefrigeradora.setText("");
         contenidoRefrigeradora.append("Agregue ComidaPreparada");
+        bitacora.grabar("agregar", "ComidaPreparada: "+nombreAlimento.getText());
 
     }//GEN-LAST:event_btnComidaPreparadaActionPerformed
 
@@ -224,6 +244,7 @@ public class FrmRefri extends javax.swing.JFrame {
         contenidoRefrigeradora.setText("");
         mirefri.meterAlimento(new Verdura( nombreAlimento.getText() ));
         contenidoRefrigeradora.append("Agregue Verdura");
+        bitacora.grabar("agregar", "Verdura: "+nombreAlimento.getText());
     }//GEN-LAST:event_btnVerduraActionPerformed
 
     private void btnFrutaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFrutaActionPerformed
@@ -231,6 +252,7 @@ public class FrmRefri extends javax.swing.JFrame {
         contenidoRefrigeradora.setText("");
         mirefri.meterAlimento(new Fruta( nombreAlimento.getText() ));
         contenidoRefrigeradora.append("Agregue Fruta");
+        bitacora.grabar("agregar", "Fruta: "+nombreAlimento.getText());
     }//GEN-LAST:event_btnFrutaActionPerformed
 
     private void btnBebidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBebidaActionPerformed
@@ -238,6 +260,7 @@ public class FrmRefri extends javax.swing.JFrame {
         contenidoRefrigeradora.setText("");
         mirefri.meterAlimento(new Bebida( nombreAlimento.getText() ));
         contenidoRefrigeradora.append("Agregue Bebida");
+        bitacora.grabar("agregar", "Bebida: "+nombreAlimento.getText());
     }//GEN-LAST:event_btnBebidaActionPerformed
 
     private void btnCarneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCarneActionPerformed
@@ -245,6 +268,7 @@ public class FrmRefri extends javax.swing.JFrame {
         contenidoRefrigeradora.setText("");
         mirefri.meterAlimento(new Carne( nombreAlimento.getText() ));
         contenidoRefrigeradora.append("Agregue Carne");
+        bitacora.grabar("agregar", "Carne: "+nombreAlimento.getText());
     }//GEN-LAST:event_btnCarneActionPerformed
 
     private void btnSalsaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalsaActionPerformed
@@ -252,6 +276,7 @@ public class FrmRefri extends javax.swing.JFrame {
         contenidoRefrigeradora.setText("");
         mirefri.meterAlimento(new Salsa( nombreAlimento.getText() ));
         contenidoRefrigeradora.append("Agregue Salsa");
+        bitacora.grabar("agregar", "Salsa: "+nombreAlimento.getText());
     }//GEN-LAST:event_btnSalsaActionPerformed
 
     private void btnMostrarAlimentosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMostrarAlimentosActionPerformed
@@ -262,7 +287,27 @@ public class FrmRefri extends javax.swing.JFrame {
     private void btnEnvejecerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnvejecerActionPerformed
         // TODO add your handling code here:
         mirefri.envejecerAlimentos();
+        bitacora.grabar("envejecer", "Aumentando tiempo alimentos");
     }//GEN-LAST:event_btnEnvejecerActionPerformed
+
+    private void btnSacarAlimentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSacarAlimentoActionPerformed
+        // TODO add your handling code here:
+        if(mirefri.sacarAlimento(nombreAlimento.getText())==true)
+        {
+            contenidoRefrigeradora.setText("Saque el alimento de la refrigeradora");
+            bitacora.grabar("sacar_alimento", nombreAlimento.getText());
+        }
+        else
+        {
+            contenidoRefrigeradora.setText("No se encontró el alimento en la refrigeradora");
+            bitacora.grabar("sacar_alimento", "No se encontro "+nombreAlimento.getText());
+        }
+    }//GEN-LAST:event_btnSacarAlimentoActionPerformed
+
+    private void btnBitacoraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBitacoraActionPerformed
+        // TODO add your handling code here:
+        contenidoRefrigeradora.setText(bitacora.obtener());
+    }//GEN-LAST:event_btnBitacoraActionPerformed
 
     /**
      * @param args the command line arguments
@@ -302,6 +347,7 @@ public class FrmRefri extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel JLabel2;
     private javax.swing.JButton btnBebida;
+    private javax.swing.JButton btnBitacora;
     private javax.swing.JButton btnCarne;
     private javax.swing.JButton btnComidaPreparada;
     private javax.swing.JButton btnEnvejecer;
