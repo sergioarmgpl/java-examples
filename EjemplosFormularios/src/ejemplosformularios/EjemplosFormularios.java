@@ -6,6 +6,7 @@
 package ejemplosformularios;
 
 import ejemplosformularios.ejemplosbasicos.*;
+import ejemplosformularios.login_usuarios.FrmLogin;
 
 import ejemplosformularios.operaciones.*;
 
@@ -45,8 +46,8 @@ public class EjemplosFormularios {
         */
         //new FrmOpMatematicas().show();
         //new FrmVotaciones().show();
-        new FrmRefri().show();
-
+        //new FrmRefri().show();
+        new FrmLogin().show();
         
         
     }
