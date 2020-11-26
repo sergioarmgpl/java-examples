@@ -128,7 +128,7 @@ public class FrmLogin extends javax.swing.JFrame {
         try{ 
             ConexionDB con=new ConexionDB();
             ResultSet rs = con.select(
-            "SELECT * FROM USUARIO U "+
+            "SELECT * FROM midb.usuario U "+
             "WHERE U.email = \""+email.getText()+"\""+
             "AND U.password = md5(\""+password.getText()+"\")" 
             );

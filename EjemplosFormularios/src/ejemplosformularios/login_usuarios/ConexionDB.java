@@ -18,7 +18,7 @@ public class ConexionDB {
     public ConexionDB(){
         try{  
             Class.forName("com.mysql.jdbc.Driver");  
-            con=DriverManager.getConnection("jdbc:mysql://localhost:3306/miempresa","root","password");  
+            con=DriverManager.getConnection("jdbc:mysql://localhost:3306/midb","root","password");  
         }catch(Exception e){ 
             System.out.println(e);
         }  

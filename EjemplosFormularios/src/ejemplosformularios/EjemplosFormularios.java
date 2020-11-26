@@ -13,6 +13,7 @@ import ejemplosformularios.operaciones.*;
 import ejemplosformularios.operacionesmatematicas.*;
 import ejemplosformularios.votacionestrump.*;
 import ejemplosformularios.refrigeradora.*;
+import ejemplosformularios.ejemplo_tabla.*;
 
 /**
  *
@@ -47,7 +48,8 @@ public class EjemplosFormularios {
         //new FrmOpMatematicas().show();
         //new FrmVotaciones().show();
         //new FrmRefri().show();
-        new FrmLogin().show();
+        //new FrmLogin().show();
+        new FrmTabla().show();
         
         
     }
