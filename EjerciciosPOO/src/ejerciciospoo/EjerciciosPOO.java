@@ -12,7 +12,8 @@ package ejerciciospoo;
 //import ejerciciospoo.composicion.*;
 //import ejerciciospoo.ejemplosdiversos.*;
 //import ejerciciospoo.interfaces.*;
-import ejerciciospoo.abstraccion.*;
+//import ejerciciospoo.abstraccion.*;
+import ejerciciospoo.sobrecarga_sobreescritura.*;
 import java.util.ArrayList;
 
 
@@ -134,7 +135,7 @@ public class EjerciciosPOO {
         
         
         //ejerciciospoo.abstraccion
-        ArrayList <Animal>mascotas=new ArrayList();
+        /*ArrayList <Animal>mascotas=new ArrayList();
         
         mascotas.add(new Animal1());
         mascotas.add(new Animal1());
@@ -148,8 +149,9 @@ public class EjerciciosPOO {
         for(int i=0;i<=(n-1);i++){
             tmp=mascotas.get(i);
             tmp.morir();
-        }
-        
+        }*/
+        //new FrmSobreescrituraSobrecarga().show();
+        new FrmPrincipal().show();
     }
     
 }

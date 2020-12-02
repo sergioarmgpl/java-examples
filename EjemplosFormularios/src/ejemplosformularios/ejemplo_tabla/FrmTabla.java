@@ -272,9 +272,9 @@ public class FrmTabla extends javax.swing.JFrame {
         try{ 
             ConexionDB con=new ConexionDB();
             ArrayList datos=new ArrayList();
-            
+            String sql="SELECT email,nombre FROM midb.usuario;";
             ResultSet rs = con.select(
-            "SELECT email,nombre FROM midb.usuario;"
+            sql
             );
 
             while(rs.next()){
